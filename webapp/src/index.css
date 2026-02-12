@@ -1,0 +1,63 @@
+@import "@knadh/oat/oat.min.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Typography */
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-heading: 'DM Sans', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  /* Aesthetic: Clean editorial */
+  --color-ink: #0a0a0a;
+  --color-ink-muted: #525252;
+  --color-surface: #fafafa;
+  --color-border: #e5e5e5;
+}
+
+::selection {
+  background-color: #0a0a0a;
+  color: white;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  animation: riseIn 0.65s ease both;
+}
+
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .delay-1,
+  .delay-2,
+  .delay-3,
+  .delay-4 {
+    animation: none;
+  }
+}

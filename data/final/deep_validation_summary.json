@@ -1,0 +1,397 @@
+{
+  "generated_at": "2026-02-12T16:44:04",
+  "landscapes": 22199,
+  "indicator_rows": 1576164,
+  "indicators": 73,
+  "indicator_coverage": [
+    {
+      "indicator": "amphibia_observations",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "annual_forest_loss_rate",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "aves_observations",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "drought_risk",
+      "count": 18905,
+      "coverage_pct": 85.16
+    },
+    {
+      "indicator": "early_forest_loss_rate",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "elevation_range",
+      "count": 22179,
+      "coverage_pct": 99.91
+    },
+    {
+      "indicator": "elevation_std",
+      "count": 22179,
+      "coverage_pct": 99.91
+    },
+    {
+      "indicator": "es_cultural_value",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "es_regulating_value",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "es_value_per_ha_yr",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "esvd_imputation_confidence",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "esvd_imputation_level",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "esvd_study_count",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "flood_risk",
+      "count": 18905,
+      "coverage_pct": 85.16
+    },
+    {
+      "indicator": "forest_cover_2000_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "forest_gain_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "forest_loss_acceleration",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "forest_loss_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "groundwater_decline",
+      "count": 18905,
+      "coverage_pct": 85.16
+    },
+    {
+      "indicator": "interannual_variability",
+      "count": 18905,
+      "coverage_pct": 85.16
+    },
+    {
+      "indicator": "land_cover_diversity",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "largest_patch_index",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_bare_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_builtup_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_class_count",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_cropland_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_grassland_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_mangroves_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_moss_lichen_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_shrubland_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_snow_ice_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_tree_cover_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_water_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "lc_wetland_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "magnoliopsida_observations",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "mammalia_observations",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "max_elevation",
+      "count": 22179,
+      "coverage_pct": 99.91
+    },
+    {
+      "indicator": "max_pop_density",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "mean_elevation",
+      "count": 22179,
+      "coverage_pct": 99.91
+    },
+    {
+      "indicator": "mean_ghm_agriculture",
+      "count": 22197,
+      "coverage_pct": 99.99
+    },
+    {
+      "indicator": "mean_ghm_builtup",
+      "count": 22197,
+      "coverage_pct": 99.99
+    },
+    {
+      "indicator": "mean_ghm_overall",
+      "count": 22197,
+      "coverage_pct": 99.99
+    },
+    {
+      "indicator": "mean_ghm_transport",
+      "count": 22197,
+      "coverage_pct": 99.99
+    },
+    {
+      "indicator": "mean_ndvi",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "mean_pop_density",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "mean_road_density",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "min_elevation",
+      "count": 22179,
+      "coverage_pct": 99.91
+    },
+    {
+      "indicator": "msa_max",
+      "count": 22196,
+      "coverage_pct": 99.99
+    },
+    {
+      "indicator": "msa_mean",
+      "count": 22196,
+      "coverage_pct": 99.99
+    },
+    {
+      "indicator": "msa_min",
+      "count": 22196,
+      "coverage_pct": 99.99
+    },
+    {
+      "indicator": "msa_std",
+      "count": 22196,
+      "coverage_pct": 99.99
+    },
+    {
+      "indicator": "natural_cover_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "ndvi_imputation_confidence",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "ndvi_imputation_level",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "ndvi_seasonal_cv",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "observation_density",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "pa_area_sqkm",
+      "count": 1014,
+      "coverage_pct": 4.57
+    },
+    {
+      "indicator": "pa_community_coverage_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "pa_count",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "pa_coverage_pct",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "pa_weighted_score",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "pop_imputation_confidence",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "pop_imputation_level",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "recent_forest_loss_rate",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "reptilia_observations",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "seasonal_variability",
+      "count": 18905,
+      "coverage_pct": 85.16
+    },
+    {
+      "indicator": "slope_max",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "slope_mean",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "species_richness",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "threatened_species_count",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "total_population",
+      "count": 22199,
+      "coverage_pct": 100.0
+    },
+    {
+      "indicator": "water_depletion",
+      "count": 18905,
+      "coverage_pct": 85.16
+    },
+    {
+      "indicator": "water_stress",
+      "count": 18905,
+      "coverage_pct": 85.16
+    }
+  ],
+  "scores_present": true,
+  "scores_rows": 22199,
+  "issue_counts": {
+    "total": 1370,
+    "by_severity": {
+      "low": 1370,
+      "high": 0,
+      "medium": 0
+    },
+    "by_category": {
+      "cross_indicator": 1369,
+      "coverage": 1
+    }
+  },
+  "top_problem_indicators": [
+    {
+      "indicator": "natural_cover_pct",
+      "issues": 1369
+    },
+    {
+      "indicator": "pa_area_sqkm",
+      "issues": 1
+    }
+  ]
+}

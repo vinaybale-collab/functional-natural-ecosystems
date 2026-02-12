@@ -1,0 +1,227 @@
+{
+  "total": 11247,
+  "page": 1,
+  "per_page": 50,
+  "landscapes": [
+    {
+      "id": "ls_00001",
+      "name": "Agumbe Rainforest Complex",
+      "state": "Karnataka",
+      "ecoregion": "North Western Ghats Moist Deciduous Forests",
+      "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+      "area_sqkm": 312,
+      "centroid": [75.09, 13.50],
+      "fne_score": 8.3,
+      "score_label": "Excellent",
+      "dimension_scores": {
+        "wild_biodiversity": 8.7,
+        "ecological_connectivity": 8.1,
+        "ecosystem_services": 8.5,
+        "climate_resilience": 8.0,
+        "community_nature_reciprocity": 8.8,
+        "abiotic_integrity": 7.9,
+        "anthropogenic_pressure": 8.1
+      },
+      "confidence": "HIGH",
+      "source": "pa_tier_a_EJAtlas"
+    },
+    {
+      "id": "ls_00247",
+      "name": "Kodagu Coffee Region Natural 3",
+      "state": "Karnataka",
+      "ecoregion": "South Western Ghats Moist Deciduous Forests",
+      "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+      "area_sqkm": 287,
+      "centroid": [75.85, 12.42],
+      "fne_score": 6.2,
+      "score_label": "Moderate",
+      "dimension_scores": {
+        "wild_biodiversity": 6.8,
+        "ecological_connectivity": 5.4,
+        "ecosystem_services": 7.1,
+        "climate_resilience": 6.5,
+        "community_nature_reciprocity": 7.2,
+        "abiotic_integrity": 5.8,
+        "anthropogenic_pressure": 4.6
+      },
+      "confidence": "HIGH",
+      "source": "worldcover_grid"
+    },
+    {
+      "id": "ls_00512",
+      "name": "Bannerghatta Complex",
+      "state": "Karnataka",
+      "ecoregion": "South Deccan Plateau Dry Deciduous Forests",
+      "biome": "Tropical & Subtropical Dry Broadleaf Forests",
+      "area_sqkm": 198,
+      "centroid": [77.57, 12.80],
+      "fne_score": 3.8,
+      "score_label": "Stressed",
+      "dimension_scores": {
+        "wild_biodiversity": 5.2,
+        "ecological_connectivity": 2.1,
+        "ecosystem_services": 4.0,
+        "climate_resilience": 3.5,
+        "community_nature_reciprocity": 2.3,
+        "abiotic_integrity": 4.1,
+        "anthropogenic_pressure": 1.8
+      },
+      "confidence": "HIGH",
+      "source": "pa_tier_b_EJAtlas"
+    },
+    {
+      "id": "ls_03201",
+      "name": "Dandeli-Anshi Complex",
+      "state": "Karnataka",
+      "ecoregion": "North Western Ghats Moist Deciduous Forests",
+      "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+      "area_sqkm": 485,
+      "centroid": [74.58, 15.20],
+      "fne_score": 7.4,
+      "score_label": "Good",
+      "dimension_scores": {
+        "wild_biodiversity": 7.8,
+        "ecological_connectivity": 7.6,
+        "ecosystem_services": 7.2,
+        "climate_resilience": 7.5,
+        "community_nature_reciprocity": 6.8,
+        "abiotic_integrity": 7.1,
+        "anthropogenic_pressure": 7.5
+      },
+      "confidence": "HIGH",
+      "source": "pa_tier_a_EJAtlas"
+    },
+    {
+      "id": "ls_04100",
+      "name": "BRT Hills Complex",
+      "state": "Karnataka",
+      "ecoregion": "South Western Ghats Moist Deciduous Forests",
+      "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+      "area_sqkm": 342,
+      "centroid": [77.15, 11.98],
+      "fne_score": 6.8,
+      "score_label": "Moderate",
+      "dimension_scores": {
+        "wild_biodiversity": 7.2,
+        "ecological_connectivity": 6.5,
+        "ecosystem_services": 6.9,
+        "climate_resilience": 7.0,
+        "community_nature_reciprocity": 7.5,
+        "abiotic_integrity": 6.2,
+        "anthropogenic_pressure": 6.3
+      },
+      "confidence": "MEDIUM",
+      "source": "pa_tier_a_EJAtlas"
+    },
+    {
+      "id": "ls_05832",
+      "name": "Thar Desert Bare/Other 12",
+      "state": "Rajasthan",
+      "ecoregion": "Thar Desert",
+      "biome": "Deserts & Xeric Shrublands",
+      "area_sqkm": 410,
+      "centroid": [71.20, 26.80],
+      "fne_score": 2.8,
+      "score_label": "Critical",
+      "dimension_scores": {
+        "wild_biodiversity": 2.1,
+        "ecological_connectivity": 3.5,
+        "ecosystem_services": 2.0,
+        "climate_resilience": 3.2,
+        "community_nature_reciprocity": 4.1,
+        "abiotic_integrity": 2.5,
+        "anthropogenic_pressure": 2.2
+      },
+      "confidence": "LOW",
+      "source": "worldcover_grid"
+    },
+    {
+      "id": "ls_07200",
+      "name": "Sundarbans Complex",
+      "state": "West Bengal",
+      "ecoregion": "Sundarbans Freshwater Swamp Forests",
+      "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+      "area_sqkm": 520,
+      "centroid": [88.90, 21.95],
+      "fne_score": 7.1,
+      "score_label": "Good",
+      "dimension_scores": {
+        "wild_biodiversity": 7.8,
+        "ecological_connectivity": 7.2,
+        "ecosystem_services": 8.0,
+        "climate_resilience": 5.8,
+        "community_nature_reciprocity": 7.5,
+        "abiotic_integrity": 6.5,
+        "anthropogenic_pressure": 6.9
+      },
+      "confidence": "HIGH",
+      "source": "pa_tier_a_WDPA"
+    },
+    {
+      "id": "ls_08410",
+      "name": "Upper Gangetic Plains Cropland 45",
+      "state": "Uttar Pradesh",
+      "ecoregion": "Upper Gangetic Plains Moist Deciduous Forests",
+      "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+      "area_sqkm": 265,
+      "centroid": [80.50, 27.10],
+      "fne_score": 3.2,
+      "score_label": "Stressed",
+      "dimension_scores": {
+        "wild_biodiversity": 2.5,
+        "ecological_connectivity": 1.8,
+        "ecosystem_services": 4.5,
+        "climate_resilience": 3.0,
+        "community_nature_reciprocity": 3.8,
+        "abiotic_integrity": 2.9,
+        "anthropogenic_pressure": 2.1
+      },
+      "confidence": "MEDIUM",
+      "source": "worldcover_grid"
+    },
+    {
+      "id": "ls_09950",
+      "name": "Kaziranga Complex",
+      "state": "Assam",
+      "ecoregion": "Brahmaputra Valley Semi-Evergreen Forests",
+      "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+      "area_sqkm": 378,
+      "centroid": [93.38, 26.58],
+      "fne_score": 7.6,
+      "score_label": "Good",
+      "dimension_scores": {
+        "wild_biodiversity": 9.1,
+        "ecological_connectivity": 6.8,
+        "ecosystem_services": 7.5,
+        "climate_resilience": 6.9,
+        "community_nature_reciprocity": 7.8,
+        "abiotic_integrity": 7.5,
+        "anthropogenic_pressure": 7.0
+      },
+      "confidence": "HIGH",
+      "source": "pa_tier_a_EJAtlas"
+    },
+    {
+      "id": "ls_11100",
+      "name": "Deccan Thorn Cropland 88",
+      "state": "Telangana",
+      "ecoregion": "Deccan Thorn Scrub Forests",
+      "biome": "Deserts & Xeric Shrublands",
+      "area_sqkm": 190,
+      "centroid": [78.50, 17.40],
+      "fne_score": 4.1,
+      "score_label": "Stressed",
+      "dimension_scores": {
+        "wild_biodiversity": 3.2,
+        "ecological_connectivity": 3.0,
+        "ecosystem_services": 5.1,
+        "climate_resilience": 4.2,
+        "community_nature_reciprocity": 4.5,
+        "abiotic_integrity": 3.8,
+        "anthropogenic_pressure": 3.5
+      },
+      "confidence": "MEDIUM",
+      "source": "worldcover_grid"
+    }
+  ]
+}

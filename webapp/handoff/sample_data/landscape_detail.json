@@ -1,0 +1,125 @@
+{
+  "id": "ls_00001",
+  "name": "Agumbe Rainforest Complex",
+  "state": "Karnataka",
+  "ecoregion": "North Western Ghats Moist Deciduous Forests",
+  "biome": "Tropical & Subtropical Moist Broadleaf Forests",
+  "area_sqkm": 312,
+  "centroid": [75.09, 13.50],
+  "geometry": {
+    "type": "Polygon",
+    "coordinates": [[[74.95, 13.35], [75.25, 13.35], [75.25, 13.65], [74.95, 13.65], [74.95, 13.35]]]
+  },
+  "fne_score": 8.3,
+  "score_label": "Excellent",
+  "dimensions": [
+    {
+      "key": "wild_biodiversity",
+      "name": "Wild Biodiversity",
+      "score": 8.7,
+      "confidence": "HIGH",
+      "drivers": [
+        {"name": "Mean Species Abundance", "value": 0.82, "unit": "MSA (0-1)", "source": "GLOBIO4"},
+        {"name": "Species Richness", "value": 487, "unit": "species", "source": "GBIF"},
+        {"name": "Threatened Species", "value": 23, "unit": "species", "source": "GBIF/IUCN"},
+        {"name": "PA Coverage", "value": 78.5, "unit": "%", "source": "WDPA+EJAtlas"}
+      ],
+      "justification": "Agumbe's rainforest harbours exceptionally high biodiversity with a GLOBIO MSA of 0.82, indicating near-pristine species abundance. GBIF records show 487 species across taxa, including 23 threatened species. The landscape is dominated by protected area coverage (78.5%), ensuring strong habitat protection."
+    },
+    {
+      "key": "ecological_connectivity",
+      "name": "Ecological Connectivity",
+      "score": 8.1,
+      "confidence": "HIGH",
+      "drivers": [
+        {"name": "Largest Patch Index", "value": 0.91, "unit": "fraction", "source": "WorldCover"},
+        {"name": "Road Density", "value": 120, "unit": "m/km2", "source": "GRIP4"},
+        {"name": "Forest Cover", "value": 88.2, "unit": "%", "source": "WorldCover"},
+        {"name": "Forest Loss Rate", "value": 0.08, "unit": "%/yr", "source": "Hansen"}
+      ],
+      "justification": "The landscape maintains excellent connectivity with 88.2% forest cover forming a single large contiguous patch (LPI 0.91). Road density is low at 120 m/km2, and annual forest loss is minimal at 0.08%. The corridor to Kudremukh is intact."
+    },
+    {
+      "key": "ecosystem_services",
+      "name": "Ecosystem Services",
+      "score": 8.5,
+      "confidence": "HIGH",
+      "drivers": [
+        {"name": "Mean NDVI", "value": 0.78, "unit": "index", "source": "MODIS"},
+        {"name": "Ecosystem Service Value", "value": 4250, "unit": "Int$/ha/yr", "source": "ESVD"},
+        {"name": "Forest Cover", "value": 88.2, "unit": "%", "source": "WorldCover"},
+        {"name": "Water Stress", "value": 0.8, "unit": "score (0-5)", "source": "Aqueduct"}
+      ],
+      "justification": "Dense vegetation (NDVI 0.78) drives strong regulating services. ESVD valuation of $4,250/ha/yr reflects high provisioning and cultural services from the rainforest. Low water stress (0.8/5) indicates intact hydrological regulation."
+    },
+    {
+      "key": "climate_resilience",
+      "name": "Climate Resilience",
+      "score": 8.0,
+      "confidence": "HIGH",
+      "drivers": [
+        {"name": "Elevation Range", "value": 1240, "unit": "meters", "source": "SRTM"},
+        {"name": "Land Cover Diversity", "value": 1.65, "unit": "Shannon index", "source": "WorldCover"},
+        {"name": "Drought Risk", "value": 0.5, "unit": "score (0-5)", "source": "Aqueduct"},
+        {"name": "NDVI Stability", "value": 0.12, "unit": "CV", "source": "MODIS"}
+      ],
+      "justification": "High topographic diversity (1,240m elevation range) creates microclimatic refugia. Low drought risk and stable seasonal vegetation (NDVI CV 0.12) indicate strong resilience. Natural forest structure supports post-disturbance recovery."
+    },
+    {
+      "key": "community_nature_reciprocity",
+      "name": "Community-Nature Reciprocity",
+      "score": 8.8,
+      "confidence": "MEDIUM",
+      "drivers": [
+        {"name": "Population Density", "value": 85, "unit": "people/km2", "source": "WorldPop"},
+        {"name": "Community PA Coverage", "value": 12.5, "unit": "%", "source": "WDPA"},
+        {"name": "Cultural ES Value", "value": 320, "unit": "Int$/ha/yr", "source": "ESVD"}
+      ],
+      "justification": "Agumbe's Malnad communities maintain deep traditional ecological practices, including snake worship (king cobra as sacred), traditional agroforestry, and community-based forest management. Moderate population density with high reciprocity. AI-adjusted +2.5 based on documented traditional ecological knowledge."
+    },
+    {
+      "key": "abiotic_integrity",
+      "name": "Abiotic Integrity",
+      "score": 7.9,
+      "confidence": "HIGH",
+      "drivers": [
+        {"name": "Water Stress", "value": 0.8, "unit": "score (0-5)", "source": "Aqueduct"},
+        {"name": "Groundwater Decline", "value": 0.3, "unit": "score (0-5)", "source": "Aqueduct"},
+        {"name": "Flood Risk", "value": 1.2, "unit": "score (0-5)", "source": "Aqueduct"},
+        {"name": "Mean Slope", "value": 18.5, "unit": "degrees", "source": "SRTM"}
+      ],
+      "justification": "Excellent water system integrity with low stress (0.8/5) and minimal groundwater decline. Moderate flood risk due to high rainfall (one of the wettest spots in India). Steep terrain (18.5 deg mean slope) maintains natural erosion patterns."
+    },
+    {
+      "key": "anthropogenic_pressure",
+      "name": "Anthropogenic Pressure",
+      "score": 8.1,
+      "confidence": "HIGH",
+      "drivers": [
+        {"name": "Human Modification Index", "value": 0.15, "unit": "gHM (0-1)", "source": "gHM 2022"},
+        {"name": "Road Density", "value": 120, "unit": "m/km2", "source": "GRIP4"},
+        {"name": "Population Density", "value": 85, "unit": "people/km2", "source": "WorldPop"},
+        {"name": "Built-up Cover", "value": 1.2, "unit": "%", "source": "WorldCover"}
+      ],
+      "justification": "Very low human modification (0.15) and minimal built-up cover (1.2%). Road density and population density are both low. Tourism pressure is the primary anthropogenic concern but remains manageable."
+    }
+  ],
+  "report": "# Agumbe Rainforest Complex - FNE Assessment Report\n\n## Executive Summary\n**Overall FNE Score: 8.3 / 10 (Excellent)**\n\nThe Agumbe Rainforest Complex represents one of India's most functional natural ecosystems. Situated in the Western Ghats biodiversity hotspot, this 312 sq km landscape maintains near-pristine ecological relationships across all seven dimensions. Its standout feature is the deep reciprocity between Malnad communities and the rainforest ecosystem, built over centuries of co-existence.\n\n**Key finding:** Agumbe demonstrates that human presence within an ecosystem can enhance rather than diminish functionality when the relationship is reciprocal.\n\n## Landscape Profile\n- **Location:** Shimoga district, Karnataka\n- **Area:** 312 sq km\n- **Biome:** Tropical & Subtropical Moist Broadleaf Forests\n- **Key features:** One of the wettest places in India (7,600 mm annual rainfall), king cobra habitat, pristine rainforest canopy, Someshwara Wildlife Sanctuary\n- **Human context:** Malnad communities with traditional agroforestry, moderate population density (~85/km2), growing eco-tourism sector\n\n## Key Strengths\n- Exceptional community-nature reciprocity rooted in centuries of traditional ecological knowledge\n- High biodiversity with intact food webs including apex predators\n- Excellent habitat connectivity with corridor to Kudremukh National Park\n- Strong hydrological regulation despite being one of India's wettest landscapes\n\n## Critical Concerns\n- Increasing tourism pressure threatening sensitive habitats\n- Climate change altering traditional rainfall patterns\n- Younger generation migration weakening knowledge transmission\n- Proposed infrastructure projects in buffer zones\n\n## Priority Actions\n1. Maintain and strengthen the Agumbe-Kudremukh corridor\n2. Support intergenerational transmission of traditional ecological practices\n3. Regulate tourism carrying capacity\n4. Monitor rainfall pattern shifts and their ecological impacts\n\n## Data Sources\nGLOBIO4, GBIF, WRI Aqueduct 4.0, ESA WorldCover 2021, Hansen GFC 2024, WDPA, ESVD, GRIP4, WorldPop, SRTM, MODIS NDVI",
+  "report_generated_date": "2026-02-08",
+  "data_sources": ["GLOBIO4", "GBIF", "WRI Aqueduct", "ESA WorldCover", "Hansen GFC", "WDPA", "ESVD", "GRIP4", "WorldPop", "SRTM", "MODIS NDVI"],
+  "key_strengths": [
+    "Exceptional community-nature reciprocity",
+    "High biodiversity with intact food webs",
+    "Excellent habitat connectivity to Kudremukh"
+  ],
+  "critical_concerns": [
+    "Increasing tourism pressure",
+    "Climate change altering rainfall patterns",
+    "Younger generation migration weakening knowledge transmission"
+  ],
+  "priority_actions": [
+    "Maintain Agumbe-Kudremukh corridor",
+    "Support traditional ecological practices",
+    "Regulate tourism carrying capacity"
+  ]
+}

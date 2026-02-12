@@ -1,0 +1,8 @@
+dimension,mean_gap_push,suggested_weight_multiplier
+community_nature_reciprocity,0.43,1.086
+climate_resilience,0.371,1.074
+wild_biodiversity,0.004,1.001
+ecological_connectivity,0.003,1.001
+ecosystem_services,0.0,1.0
+abiotic_integrity,0.0,1.0
+anthropogenic_pressure,-0.035,0.993
