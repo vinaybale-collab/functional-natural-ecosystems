@@ -14,6 +14,8 @@ const ComparisonRadar = ({ data1, data2, name1, name2 }) => {
     { subject: 'Abiotic', landscape1: data1.abiotic_integrity || 0, landscape2: data2.abiotic_integrity || 0, fullMark: 10 },
     { subject: 'Pressure', landscape1: data1.anthropogenic_pressure || 0, landscape2: data2.anthropogenic_pressure || 0, fullMark: 10 },
   ];
+  const maxValue = Math.max(...chartData.flatMap((d) => [d.landscape1, d.landscape2]), 4);
+  const upper = Math.min(10, Math.ceil(maxValue + 1));
 
   // Calculate average scores for color
   const avgScore1 = Object.values(data1).reduce((a, b) => a + b, 0) / Object.keys(data1).length;
@@ -30,7 +32,7 @@ const ComparisonRadar = ({ data1, data2, name1, name2 }) => {
             dataKey="subject" 
             tick={{ fill: '#4b5563', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }} 
           />
-          <PolarRadiusAxis angle={30} domain={[0, 10]} tick={false} axisLine={false} />
+          <PolarRadiusAxis angle={30} domain={[0, upper]} tick={false} axisLine={false} />
           <Radar
             name={name1}
             dataKey="landscape1"

@@ -1,34 +1,42 @@
-import React, { useEffect, useMemo } from 'react';
-import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet';
+import React, { useMemo } from 'react';
+import { MapContainer, TileLayer, GeoJSON, CircleMarker, Tooltip as LeafletTooltip } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { getScoreColor } from '../../utils/scoring';
-
-function FitBounds({ features }) {
-  const map = useMap();
-  useEffect(() => {
-    if (!features || features.length === 0) return;
-    const bounds = features.flatMap(f => {
-      const coords = f.geometry?.coordinates?.[0] || [];
-      return coords.map(c => [c[1], c[0]]);
-    });
-    if (bounds.length > 0) {
-      map.fitBounds(bounds, { padding: [40, 40], maxZoom: 9 });
-    }
-  }, [map, features]);
-  return null;
-}
 
 const ComparisonMap = ({ geoJSON, id1, id2 }) => {
   const filtered = useMemo(() => {
     if (!geoJSON?.features) return null;
-    const f1 = geoJSON.features.find(f => f.properties.id === id1);
-    const f2 = geoJSON.features.find(f => f.properties.id === id2);
+    const f1 = geoJSON.features.find((f) => f.properties.id === id1);
+    const f2 = geoJSON.features.find((f) => f.properties.id === id2);
     return [f1, f2].filter(Boolean);
   }, [geoJSON, id1, id2]);
 
   const filteredGeoJSON = useMemo(() => {
     if (!filtered?.length) return null;
     return { type: 'FeatureCollection', features: filtered };
+  }, [filtered]);
+
+  const points = useMemo(() => {
+    if (!filtered?.length) return [];
+    return filtered
+      .map((f) => {
+        const p = f.properties || {};
+        if (p.centroid_lat && p.centroid_lon) {
+          return {
+            id: p.id,
+            name: p.name || p.id,
+            lat: Number(p.centroid_lat),
+            lon: Number(p.centroid_lon),
+            score: Number(p.fne_score || 0),
+          };
+        }
+        const coords = f.geometry?.coordinates?.[0] || [];
+        if (!coords.length) return null;
+        const lat = coords.reduce((sum, c) => sum + c[1], 0) / coords.length;
+        const lon = coords.reduce((sum, c) => sum + c[0], 0) / coords.length;
+        return { id: p.id, name: p.name || p.id, lat, lon, score: Number(p.fne_score || 0) };
+      })
+      .filter(Boolean);
   }, [filtered]);
 
   const style = (feature) => {
@@ -47,15 +55,28 @@ const ComparisonMap = ({ geoJSON, id1, id2 }) => {
   return (
     <div className="h-full min-h-[400px] rounded-2xl overflow-hidden border border-gray-200 bg-gray-50">
       <MapContainer
-        center={[13.5, 77.2]}
-        zoom={7}
+        center={[22.8, 79.0]}
+        zoom={4.8}
+        minZoom={4}
+        maxZoom={9}
         style={{ height: '100%', width: '100%' }}
-        zoomControl={false}
-        scrollWheelZoom={false}
+        zoomControl
+        scrollWheelZoom
       >
-        <FitBounds features={filtered} />
-        <TileLayer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" attribution="© CARTO" />
+        <TileLayer url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png" attribution="&copy; CARTO" />
         <GeoJSON data={filteredGeoJSON} style={style} />
+        {points.map((p) => (
+          <CircleMarker
+            key={p.id}
+            center={[p.lat, p.lon]}
+            radius={7}
+            pathOptions={{ color: '#111827', fillColor: getScoreColor(p.score), fillOpacity: 0.95, weight: 1.5 }}
+          >
+            <LeafletTooltip direction="top" offset={[0, -6]} opacity={1}>
+              <div className="text-xs font-semibold">{p.name}</div>
+            </LeafletTooltip>
+          </CircleMarker>
+        ))}
       </MapContainer>
     </div>
   );

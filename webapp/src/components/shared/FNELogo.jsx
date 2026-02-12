@@ -6,15 +6,13 @@ import React from 'react';
  */
 const IconMark = () => (
   <svg className="w-8 h-8" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="32" height="32" rx="8" className="fill-current" />
-    {/* FNE - ecosystem network icon */}
-    <circle cx="16" cy="16" r="4" stroke="white" strokeWidth="2" fill="none" />
-    <circle cx="16" cy="16" r="1.5" fill="white" />
-    <circle cx="16" cy="8" r="2" fill="white" fillOpacity="0.8" />
-    <circle cx="24" cy="16" r="2" fill="white" fillOpacity="0.8" />
-    <circle cx="16" cy="24" r="2" fill="white" fillOpacity="0.8" />
-    <circle cx="8" cy="16" r="2" fill="white" fillOpacity="0.8" />
-    <path d="M16 12v-2M20 16h2M16 20v2M12 16h-2" stroke="white" strokeWidth="1" strokeLinecap="round" fill="none" />
+    <circle cx="16" cy="16" r="4.5" stroke="currentColor" strokeWidth="2" fill="none" />
+    <circle cx="16" cy="16" r="1.8" fill="currentColor" />
+    <circle cx="16" cy="7.5" r="2.1" fill="currentColor" fillOpacity="0.9" />
+    <circle cx="24.5" cy="16" r="2.1" fill="currentColor" fillOpacity="0.9" />
+    <circle cx="16" cy="24.5" r="2.1" fill="currentColor" fillOpacity="0.9" />
+    <circle cx="7.5" cy="16" r="2.1" fill="currentColor" fillOpacity="0.9" />
+    <path d="M16 10.8v-1.2M21.2 16h1.2M16 21.2v1.2M10.8 16H9.6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" fill="none" />
   </svg>
 );
 
@@ -25,7 +23,7 @@ const FNELogo = ({ showIcon = true, compact = false, invert = false, className =
   return (
     <div className={`flex items-center gap-4 ${className}`}>
       {showIcon && (
-        <div className={`shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${invert ? 'bg-white text-black' : 'bg-black text-white'}`}>
+        <div className={`shrink-0 w-12 h-12 rounded-xl flex items-center justify-center border ${invert ? 'bg-white text-black border-white/20' : 'bg-black text-white border-black'}`}>
           <IconMark />
         </div>
       )}

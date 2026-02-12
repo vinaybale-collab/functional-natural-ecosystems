@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getLandscapeDetail } from '../services/api';
-import { ArrowLeft, Download, Activity, Info, AlertTriangle, CheckCircle2, TrendingUp, ChevronDown, ShieldCheck, Database } from 'lucide-react';
+import { ArrowLeft, Activity, Info, AlertTriangle, CheckCircle2, TrendingUp, ChevronDown, ShieldCheck, Database } from 'lucide-react';
 import LandscapeRadar from '../components/Dashboard/LandscapeRadar';
 import ScoreDisplay from '../components/shared/ScoreDisplay';
 import { getScoreColor } from '../utils/scoring';
@@ -94,9 +94,6 @@ const LandscapeDetailPage = () => {
             <p className="text-[11px] font-sans font-medium tracking-widest uppercase text-gray-400 mt-1">{data.id} • {data.state}</p>
           </div>
         </div>
-        <button className="hidden md:flex items-center gap-2 px-5 py-2.5 text-xs font-heading font-semibold uppercase tracking-wider text-white bg-black hover:bg-gray-800 rounded-xl transition-all">
-          <Download className="w-4 h-4" /> Export Report
-        </button>
       </div>
 
       <main className="w-full px-4 md:px-8 py-6 md:py-10">

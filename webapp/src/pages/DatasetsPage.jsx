@@ -2,7 +2,7 @@ import React from 'react';
 import SiteHeader from '../components/shared/SiteHeader';
 import SiteFooter from '../components/shared/SiteFooter';
 import { DATASETS } from '../constants/datasets';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Cell } from 'recharts';
 
 const plainExplain = {
   Biodiversity: 'Tells us how healthy and diverse life is in a place.',
@@ -12,6 +12,17 @@ const plainExplain = {
   'Anthropogenic Pressure': 'Tells us how much human activity is stressing the ecosystem.',
   Abiotic: 'Physical environment quality (water, terrain, non-living systems).',
   Community: 'How strongly communities and ecosystems support each other.',
+};
+
+const DIMENSION_COLORS = {
+  Biodiversity: '#0f766e',
+  Connectivity: '#1d4ed8',
+  'Ecosystem Services': '#15803d',
+  'Climate Resilience': '#6d28d9',
+  'Anthropogenic Pressure': '#b91c1c',
+  Abiotic: '#0369a1',
+  Community: '#7c2d12',
+  'Abiotic Integrity': '#0369a1',
 };
 
 const DatasetsPage = () => {
@@ -25,8 +36,11 @@ const DatasetsPage = () => {
   const radarData = dimensionCounts.map((d) => ({
     dimension: d.dimension.length > 12 ? d.dimension.slice(0, 12) + '...' : d.dimension,
     support: (d.count / DATASETS.length) * 10,
+    fill: DIMENSION_COLORS[d.dimension] || '#334155',
     fullMark: 10,
   }));
+  const maxSupport = Math.max(...radarData.map((d) => d.support), 4);
+  const radarUpper = Math.ceil(maxSupport + 1);
 
   return (
     <div className="min-h-screen bg-white text-gray-900">
@@ -49,8 +63,15 @@ const DatasetsPage = () => {
                   <CartesianGrid strokeDasharray="3 3" stroke="#eef2f7" />
                   <XAxis dataKey="dimension" angle={-25} textAnchor="end" interval={0} height={70} tick={{ fontSize: 11 }} />
                   <YAxis allowDecimals={false} />
-                  <Tooltip formatter={(value) => [value, 'datasets']} />
-                  <Bar dataKey="count" fill="#111827" radius={[6, 6, 0, 0]} />
+                  <Tooltip
+                    formatter={(value, _, payload) => [value, `datasets (${payload?.payload?.dimension || ''})`]}
+                    contentStyle={{ borderRadius: 10, border: '1px solid #e5e7eb' }}
+                  />
+                  <Bar dataKey="count" radius={[6, 6, 0, 0]}>
+                    {dimensionCounts.map((entry) => (
+                      <Cell key={entry.dimension} fill={DIMENSION_COLORS[entry.dimension] || '#111827'} />
+                    ))}
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -63,8 +84,8 @@ const DatasetsPage = () => {
                 <RadarChart cx="50%" cy="50%" outerRadius="72%" data={radarData}>
                   <PolarGrid stroke="#e5e7eb" />
                   <PolarAngleAxis dataKey="dimension" tick={{ fontSize: 10, fill: '#4b5563' }} />
-                  <PolarRadiusAxis domain={[0, 10]} tick={false} axisLine={false} />
-                  <Radar dataKey="support" stroke="#059669" fill="#10b981" fillOpacity={0.25} strokeWidth={2.5} />
+                  <PolarRadiusAxis domain={[0, radarUpper]} tick={false} axisLine={false} />
+                  <Radar dataKey="support" stroke="#0f766e" fill="#14b8a6" fillOpacity={0.28} strokeWidth={2.5} />
                 </RadarChart>
               </ResponsiveContainer>
             </div>
@@ -74,15 +95,25 @@ const DatasetsPage = () => {
         <section className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 reveal delay-2">
           {DATASETS.map((d) => (
             <article key={d.id} className="card p-5 border border-gray-200 rounded-xl bg-white">
-              <div className="flex items-center justify-between mb-2">
-                <h2 className="text-lg font-heading font-semibold">{d.name}</h2>
-                <span className="badge">{d.abbr}</span>
+              <div className="flex items-center gap-3 mb-3">
+                <div
+                  className="w-12 h-12 rounded-xl text-white flex items-center justify-center text-xs font-bold tracking-wider"
+                  style={{ background: DIMENSION_COLORS[d.dimension] || '#111827' }}
+                >
+                  {d.abbr}
+                </div>
+                <div>
+                  <h2 className="text-lg font-heading font-semibold leading-tight">{d.name}</h2>
+                  <p className="text-xs uppercase tracking-wide text-gray-500">{d.source}</p>
+                </div>
               </div>
-              <p className="text-xs uppercase tracking-wide text-gray-500 mb-2">{d.source}</p>
               <p className="text-sm text-gray-700 mb-3">{d.description}</p>
-              <div className="text-xs text-gray-600 bg-gray-50 rounded-md p-2">
+              <div className="text-xs text-gray-600 bg-gray-50 rounded-md p-2 mb-2">
                 <strong>How it helps:</strong> {plainExplain[d.dimension] || 'Supports one or more scoring dimensions.'}
               </div>
+              <p className="text-xs font-medium text-gray-700">
+                Used in: <span className="font-semibold">{d.dimension}</span> scoring signals.
+              </p>
             </article>
           ))}
         </section>

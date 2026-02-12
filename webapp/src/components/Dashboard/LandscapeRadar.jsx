@@ -14,6 +14,8 @@ const LandscapeRadar = ({ data, overallScore }) => {
     { subject: 'Abiotic', A: data.abiotic_integrity || 0, fullMark: 10 },
     { subject: 'Pressure', A: data.anthropogenic_pressure || 0, fullMark: 10 },
   ];
+  const maxValue = Math.max(...chartData.map((d) => d.A), 4);
+  const upper = Math.min(10, Math.ceil(maxValue + 1));
 
   const color = getScoreColor(overallScore);
 
@@ -26,7 +28,7 @@ const LandscapeRadar = ({ data, overallScore }) => {
             dataKey="subject" 
             tick={{ fill: '#4b5563', fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }} 
           />
-          <PolarRadiusAxis angle={30} domain={[0, 10]} tick={false} axisLine={false} />
+          <PolarRadiusAxis angle={30} domain={[0, upper]} tick={false} axisLine={false} />
           <Radar
             name="Landscape Score"
             dataKey="A"
