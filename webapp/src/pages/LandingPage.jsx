@@ -5,7 +5,7 @@ import FNELogo from '../components/shared/FNELogo';
 import SiteFooter from '../components/shared/SiteFooter';
 import { DATASETS } from '../constants/datasets';
 
-const scorePill = 'inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-xs tracking-wider uppercase';
+const scorePill = 'inline-flex items-center rounded-full border border-gray-300/90 bg-white px-3.5 py-1.5 text-[11px] font-medium tracking-[0.14em] uppercase';
 
 const LandingPage = () => {
   const navigate = useNavigate();
@@ -38,34 +38,36 @@ const LandingPage = () => {
         <section className="max-w-7xl mx-auto px-4 md:px-8 pt-10 pb-10 reveal">
           <div className="grid lg:grid-cols-12 gap-6 md:gap-8 items-stretch">
             <div className="lg:col-span-6 reveal delay-1 flex flex-col justify-center">
-              <p className="text-xs tracking-[0.2em] uppercase text-gray-500 mb-3">Functional Natural Ecosystems - India</p>
-              <h1 className="font-display text-5xl md:text-7xl leading-[0.95] tracking-tight mb-4">
+              <p className="text-[11px] tracking-[0.24em] uppercase text-gray-500 mb-3 font-semibold">Functional Natural Ecosystems - India</p>
+              <h1 className="font-display text-5xl md:text-7xl lg:text-[5.4rem] leading-[0.92] tracking-[-0.01em] mb-5">
                 How functional are
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-lime-700">our ecosystems?</span>
               </h1>
-              <p className="mt-5 text-lg text-gray-600 max-w-2xl">
+              <p className="text-[1.08rem] md:text-[1.18rem] text-gray-600 max-w-xl leading-relaxed">
                 22,199 landscapes, 7 dimensions, and a deep evidence trail from global datasets to landscape-level decisions.
                 This platform helps compare places, understand drivers, and prioritize action.
               </p>
 
-              <div className="mt-7 flex flex-wrap gap-2">
+              <div className="mt-8 flex flex-wrap gap-2.5">
                 <span className={scorePill}>22,199 Landscapes</span>
                 <span className={scorePill}>14+ Dataset Families</span>
                 <span className={scorePill}>75 Indicators In Pipeline</span>
                 <span className={scorePill}>India-Scale Coverage</span>
               </div>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-8 rounded-2xl border border-gray-200 bg-gray-50/70 p-3.5 md:p-4">
+                <div className="flex flex-wrap gap-2.5">
                 <button
                   onClick={() => navigate('/app')}
-                  className="group inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-black text-white font-medium hover:bg-gray-800 transition-colors"
+                  className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-black text-white text-sm font-semibold tracking-wide hover:bg-gray-800 transition-colors shadow-sm"
                 >
                   Press Enter to Explore
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
                 </button>
-                <Link to="/methodology" className="px-6 py-3 rounded-xl border border-gray-300 hover:bg-gray-50">Read Methodology</Link>
-                <Link to="/datasets" className="px-6 py-3 rounded-xl border border-gray-300 hover:bg-gray-50">Understand Datasets</Link>
-                <Link to="/about" className="px-6 py-3 rounded-xl border border-gray-300 hover:bg-gray-50">About FNE</Link>
+                <Link to="/methodology" className="px-5 py-3 rounded-xl border border-gray-300 bg-white hover:bg-gray-100 text-sm font-medium">Read Methodology</Link>
+                <Link to="/datasets" className="px-5 py-3 rounded-xl border border-gray-300 bg-white hover:bg-gray-100 text-sm font-medium">Understand Datasets</Link>
+                <Link to="/about" className="px-5 py-3 rounded-xl border border-gray-300 bg-white hover:bg-gray-100 text-sm font-medium">About FNE</Link>
+                </div>
               </div>
             </div>
 
