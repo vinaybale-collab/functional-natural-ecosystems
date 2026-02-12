@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ArrowRight, Globe2, Layers3, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import FNELogo from '../components/shared/FNELogo';
 import SiteFooter from '../components/shared/SiteFooter';
 import { DATASETS } from '../constants/datasets';
@@ -88,30 +88,29 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section className="max-w-7xl mx-auto px-4 md:px-8 py-8 reveal delay-3">
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="rounded-2xl border border-gray-200 p-5 bg-gray-50">
-              <div className="flex items-center gap-2 text-sm font-medium mb-2"><Globe2 className="w-4 h-4" /> Scale</div>
-              <p className="text-sm text-gray-600">National landscape inventory with comparable scores from mountains to coasts.</p>
-            </div>
-            <div className="rounded-2xl border border-gray-200 p-5 bg-gray-50">
-              <div className="flex items-center gap-2 text-sm font-medium mb-2"><Layers3 className="w-4 h-4" /> Depth</div>
-              <p className="text-sm text-gray-600">Each score can be traced to dimension drivers and indicator-level provenance.</p>
-            </div>
-            <div className="rounded-2xl border border-gray-200 p-5 bg-gray-50">
-              <div className="flex items-center gap-2 text-sm font-medium mb-2"><ShieldCheck className="w-4 h-4" /> Trust</div>
-              <p className="text-sm text-gray-600">Confidence and imputation transparency are shown per landscape, not hidden.</p>
-            </div>
-          </div>
-        </section>
-
-        <section className="max-w-7xl mx-auto px-4 md:px-8 pb-10 reveal delay-4">
-          <div className="rounded-2xl border border-gray-900 bg-gray-900 text-white p-6 md:p-8">
-            <h3 className="text-2xl md:text-3xl font-display mb-5">Three things this database helps you answer</h3>
-            <div className="grid md:grid-cols-3 gap-5 text-sm text-gray-100">
-              <p><strong className="text-white">1.</strong> Which landscapes are strongest or weakest right now, and where?</p>
-              <p><strong className="text-white">2.</strong> What drivers are causing differences between two landscapes?</p>
-              <p><strong className="text-white">3.</strong> Where should intervention happen first, backed by data confidence?</p>
+        <section className="max-w-7xl mx-auto px-4 md:px-8 py-10 reveal delay-4">
+          <div className="rounded-3xl border border-gray-800 bg-gradient-to-br from-gray-900 via-gray-900 to-emerald-950 text-white p-6 md:p-10 shadow-2xl">
+            <p className="text-[11px] uppercase tracking-[0.2em] text-white/70 mb-2">Decision Intelligence</p>
+            <h3 className="text-3xl md:text-4xl font-display mb-7">Three things this database helps you answer</h3>
+            <div className="grid md:grid-cols-3 gap-4 md:gap-5">
+              <article className="rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur-sm">
+                <p className="text-xs text-white/70 mb-2 tracking-widest uppercase">Question 01</p>
+                <p className="text-sm md:text-base text-white leading-relaxed">
+                  Which landscapes are strongest or weakest right now, and exactly where are they?
+                </p>
+              </article>
+              <article className="rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur-sm">
+                <p className="text-xs text-white/70 mb-2 tracking-widest uppercase">Question 02</p>
+                <p className="text-sm md:text-base text-white leading-relaxed">
+                  What specific drivers are causing differences between two landscapes?
+                </p>
+              </article>
+              <article className="rounded-2xl border border-white/15 bg-white/5 p-5 backdrop-blur-sm">
+                <p className="text-xs text-white/70 mb-2 tracking-widest uppercase">Question 03</p>
+                <p className="text-sm md:text-base text-white leading-relaxed">
+                  Where should interventions happen first, with confidence and evidence?
+                </p>
+              </article>
             </div>
           </div>
         </section>
