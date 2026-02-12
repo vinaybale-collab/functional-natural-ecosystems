@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 const DashboardPage = () => {
   const [landscapes, setLandscapes] = useState([]);
   const [geoJSON, setGeoJSON] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loadingList, setLoadingList] = useState(true);
+  const [loadingMap, setLoadingMap] = useState(true);
   const [selectedId, setSelectedId] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
@@ -19,18 +20,23 @@ const DashboardPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true);
+      setLoadingList(true);
+      setLoadingMap(true);
       try {
-        const [listRes, geoRes] = await Promise.all([
-          getLandscapes(),
-          getLandscapesGeoJSON()
-        ]);
+        // Load list first for fast interaction.
+        const listRes = await getLandscapes();
         setLandscapes(listRes.landscapes || []);
-        setGeoJSON(geoRes);
+        setLoadingList(false);
+
+        // Load heavy boundary geometry in background.
+        getLandscapesGeoJSON()
+          .then((geoRes) => setGeoJSON(geoRes))
+          .catch((err) => console.error("Failed to load map boundaries", err))
+          .finally(() => setLoadingMap(false));
       } catch (err) {
-        console.error("Failed to load data", err);
-      } finally {
-        setLoading(false);
+        console.error("Failed to load landscape list", err);
+        setLoadingList(false);
+        setLoadingMap(false);
       }
     };
     fetchData();
@@ -58,19 +64,15 @@ const DashboardPage = () => {
       
       {/* Map Layer */}
       <div className="absolute inset-0 z-0">
-        {loading ? (
-           <div className="flex items-center justify-center h-full bg-gray-50">
-             <div className="flex flex-col items-center gap-6">
-               <div className="w-16 h-16 border-4 border-gray-200 border-t-black rounded-full animate-spin"></div>
-               <p className="text-sm text-gray-500 font-medium tracking-widest uppercase">Initializing FNE Engine</p>
-             </div>
-           </div>
-        ) : (
-          <LandscapeMap 
-            landscapesGeoJSON={geoJSON} 
-            selectedId={selectedId} 
-            onSelect={handleLandscapeSelect}
-          />
+        <LandscapeMap 
+          landscapesGeoJSON={geoJSON} 
+          selectedId={selectedId} 
+          onSelect={handleLandscapeSelect}
+        />
+        {loadingMap && (
+          <div className="absolute top-4 right-4 z-[500] px-3 py-2 rounded-lg bg-white/90 border border-gray-200 text-xs text-gray-600">
+            Loading map boundaries...
+          </div>
         )}
       </div>
 
@@ -125,7 +127,7 @@ const DashboardPage = () => {
           
           {/* List Component */}
           <div className="flex-1 overflow-hidden relative">
-            {loading ? (
+            {loadingList ? (
               <div className="p-10 text-center text-sm text-gray-500">Loading data...</div>
             ) : (
               <LandscapeList 

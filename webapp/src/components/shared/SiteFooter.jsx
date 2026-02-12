@@ -9,7 +9,6 @@ const SiteFooter = () => {
           Functional Natural Ecosystems (FNE) India - Landscape intelligence platform.
         </p>
         <nav className="flex items-center gap-3 text-xs">
-          <Link to="/about" className="text-gray-600 hover:text-black">About</Link>
           <Link to="/methodology" className="text-gray-600 hover:text-black">Methodology</Link>
           <Link to="/datasets" className="text-gray-600 hover:text-black">Datasets</Link>
           <Link to="/app" className="text-gray-600 hover:text-black">Explore</Link>

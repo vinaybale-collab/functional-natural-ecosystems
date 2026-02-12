@@ -7,7 +7,6 @@ import LandscapeDetailPage from './pages/LandscapeDetailPage';
 import ComparisonPage from './pages/ComparisonPage';
 import MethodologyPage from './pages/MethodologyPage';
 import DatasetsPage from './pages/DatasetsPage';
-import AboutPage from './pages/AboutPage';
 
 function App() {
   const Router = window.location.hostname.includes('github.io') ? HashRouter : BrowserRouter;
@@ -20,7 +19,6 @@ function App() {
           <Route path="/app" element={<DashboardPage />} />
           <Route path="/methodology" element={<MethodologyPage />} />
           <Route path="/datasets" element={<DatasetsPage />} />
-          <Route path="/about" element={<AboutPage />} />
           <Route path="/landscape/:id" element={<LandscapeDetailPage />} />
           <Route path="/compare/:id1/:id2" element={<ComparisonPage />} />
         </Routes>

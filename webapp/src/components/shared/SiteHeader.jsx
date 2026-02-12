@@ -4,7 +4,7 @@ import FNELogo from './FNELogo';
 
 const navCls = ({ isActive }) =>
   `px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-    isActive ? 'bg-black text-white' : 'text-gray-700 hover:bg-gray-100'
+    isActive ? 'bg-emerald-700 text-white' : 'text-gray-700 hover:bg-emerald-50'
   }`;
 
 const SiteHeader = () => {
@@ -15,7 +15,6 @@ const SiteHeader = () => {
           <FNELogo showIcon compact={false} />
         </Link>
         <nav className="flex items-center gap-1">
-          <NavLink to="/about" className={navCls}>About</NavLink>
           <NavLink to="/app" className={navCls}>Explore</NavLink>
           <NavLink to="/methodology" className={navCls}>Methodology</NavLink>
           <NavLink to="/datasets" className={navCls}>Datasets</NavLink>

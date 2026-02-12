@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Search, ChevronRight, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { getScoreColor, getScoreLabel } from '../../utils/scoring';
@@ -8,7 +8,8 @@ const LandscapeList = ({ landscapes, onSelect, selectedId, compareMode = false, 
   const [search, setSearch] = useState('');
   const [filterState, setFilterState] = useState('All');
   const [filterScore, setFilterScore] = useState('All');
-  const [sortBy, setSortBy] = useState('score_desc'); 
+  const [sortBy] = useState('score_desc');
+  const [visibleCount, setVisibleCount] = useState(220);
 
   const states = ['All', ...new Set(landscapes.map(l => l.state))].sort();
   const scoreCategories = ['All', 'Excellent', 'Good', 'Moderate', 'Stressed', 'Critical'];
@@ -17,7 +18,7 @@ const LandscapeList = ({ landscapes, onSelect, selectedId, compareMode = false, 
     const matchesSearch = l.name.toLowerCase().includes(search.toLowerCase()) || 
                           l.state.toLowerCase().includes(search.toLowerCase());
     const matchesState = filterState === 'All' || l.state === filterState;
-    const matchesScore = filterScore === 'All' || l.score_label === filterScore;
+    const matchesScore = filterScore === 'All' || getScoreLabel(l.fne_score) === filterScore;
     return matchesSearch && matchesState && matchesScore;
   });
 
@@ -28,6 +29,9 @@ const LandscapeList = ({ landscapes, onSelect, selectedId, compareMode = false, 
     if (sortBy === 'area_desc') return b.area_sqkm - a.area_sqkm;
     return 0;
   });
+  useEffect(() => {
+    setVisibleCount(220);
+  }, [search, filterState, filterScore]);
 
   const bins = [
     { label: '0-2', min: 0, max: 2 },
@@ -41,6 +45,8 @@ const LandscapeList = ({ landscapes, onSelect, selectedId, compareMode = false, 
     range: bin.label,
     count: landscapes.filter((l) => l.fne_score >= bin.min && l.fne_score < bin.max).length,
   }));
+
+  const visibleItems = useMemo(() => sorted.slice(0, visibleCount), [sorted, visibleCount]);
 
   return (
     <div className="flex flex-col h-full bg-white/80 backdrop-blur-xl border-r border-gray-200 font-sans text-gray-900">
@@ -115,7 +121,7 @@ const LandscapeList = ({ landscapes, onSelect, selectedId, compareMode = false, 
 
       {/* List Area */}
       <div className="flex-1 overflow-y-auto custom-scrollbar bg-gray-50/50 p-3 space-y-2">
-        {sorted.map(landscape => {
+        {visibleItems.map(landscape => {
           const isSelected = selectedId === landscape.id;
           const isCompareSelected = compareIds.includes(landscape.id);
           const scoreColor = getScoreColor(landscape.fne_score);
@@ -191,6 +197,14 @@ const LandscapeList = ({ landscapes, onSelect, selectedId, compareMode = false, 
             </div>
           );
         })}
+        {visibleCount < sorted.length && (
+          <button
+            onClick={() => setVisibleCount((v) => v + 220)}
+            className="w-full py-2.5 rounded-xl border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-100"
+          >
+            Load More Landscapes ({(sorted.length - visibleCount).toLocaleString()} remaining)
+          </button>
+        )}
       </div>
     </div>
   );

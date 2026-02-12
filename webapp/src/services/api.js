@@ -19,7 +19,10 @@ const DIMENSIONS = [
   { key: 'anthropogenic_pressure', name: 'Anthropogenic Pressure' },
 ];
 
-let staticDataPromise = null;
+let staticScoresPromise = null;
+let staticIndexPromise = null;
+let staticGeoPromise = null;
+let staticLandscapesPromise = null;
 
 function buildQuery(params = {}) {
   const clean = Object.fromEntries(
@@ -64,76 +67,97 @@ function buildDimensions(row = {}) {
   });
 }
 
-async function loadStaticData() {
-  if (staticDataPromise) return staticDataPromise;
-
-  staticDataPromise = (async () => {
+async function loadStaticScores() {
+  if (staticScoresPromise) return staticScoresPromise;
+  staticScoresPromise = (async () => {
     const base = import.meta.env.BASE_URL || '/';
     const scoreUrl = `${base}data/landscape_scores.csv`;
+    const scoreText = await fetch(scoreUrl).then((r) => {
+      if (!r.ok) throw new Error(`Failed to load ${scoreUrl}`);
+      return r.text();
+    });
+    const rows = parseCsv(scoreText);
+    return new Map(rows.map((r) => [r.landscape_id, r]));
+  })();
+  return staticScoresPromise;
+}
+
+async function loadStaticIndex() {
+  if (staticIndexPromise) return staticIndexPromise;
+  staticIndexPromise = (async () => {
+    const base = import.meta.env.BASE_URL || '/';
+    const indexUrl = `${base}data/landscape_index_min.json`;
+    return fetch(indexUrl).then((r) => {
+      if (!r.ok) throw new Error(`Failed to load ${indexUrl}`);
+      return r.json();
+    });
+  })();
+  return staticIndexPromise;
+}
+
+async function loadStaticLandscapes() {
+  if (staticLandscapesPromise) return staticLandscapesPromise;
+  staticLandscapesPromise = (async () => {
+    const [scoreById, indexRows] = await Promise.all([loadStaticScores(), loadStaticIndex()]);
+    return indexRows.map((idx) => {
+      const id = idx.landscape_id;
+      const row = scoreById.get(id) || {};
+      const fneScore = toNum(row.fne_score) ?? 0;
+      return {
+        id,
+        name: idx.name || id,
+        state: idx.state || 'Unknown',
+        ecoregion: idx.ecoregion || 'Unknown',
+        area_sqkm: Number((toNum(idx.area_sqkm) ?? 0).toFixed(2)),
+        centroid_lat: toNum(idx.centroid_lat),
+        centroid_lon: toNum(idx.centroid_lon),
+        source: idx.source || '',
+        fne_score: Number(fneScore.toFixed(2)),
+        score_label: row.score_label || 'Unknown',
+        confidence: row.confidence || 'MEDIUM',
+        dimension_scores: {
+          wild_biodiversity: toNum(row.wild_biodiversity) ?? 0,
+          ecological_connectivity: toNum(row.ecological_connectivity) ?? 0,
+          ecosystem_services: toNum(row.ecosystem_services) ?? 0,
+          climate_resilience: toNum(row.climate_resilience) ?? 0,
+          community_nature_reciprocity: toNum(row.community_nature_reciprocity) ?? 0,
+          abiotic_integrity: toNum(row.abiotic_integrity) ?? 0,
+          anthropogenic_pressure: toNum(row.anthropogenic_pressure) ?? 0,
+        },
+        _row: row,
+      };
+    });
+  })();
+  return staticLandscapesPromise;
+}
+
+async function loadStaticGeoJSON() {
+  if (staticGeoPromise) return staticGeoPromise;
+  staticGeoPromise = (async () => {
+    const base = import.meta.env.BASE_URL || '/';
     const boundsUrl = `${base}data/landscape_boundaries_v3.geojson`;
-
-    const [scoreText, boundaries] = await Promise.all([
-      fetch(scoreUrl).then((r) => {
-        if (!r.ok) throw new Error(`Failed to load ${scoreUrl}`);
-        return r.text();
-      }),
-      fetch(boundsUrl).then((r) => {
-        if (!r.ok) throw new Error(`Failed to load ${boundsUrl}`);
-        return r.json();
-      }),
-    ]);
-
-    const scoreRows = parseCsv(scoreText);
-    const scoreById = new Map(scoreRows.map((r) => [r.landscape_id, r]));
-
-    const landscapes = [];
+    const boundaries = await fetch(boundsUrl).then((r) => {
+      if (!r.ok) throw new Error(`Failed to load ${boundsUrl}`);
+      return r.json();
+    });
+    const scoreById = await loadStaticScores();
     const features = (boundaries.features || []).map((f) => {
       const props = f.properties || {};
       const id = props.landscape_id || props.id;
       const row = scoreById.get(id) || {};
-      const fneScore = toNum(row.fne_score) ?? 0;
-      const scoreLabel = row.score_label || 'Unknown';
-
-      const dimension_scores = {
-        wild_biodiversity: toNum(row.wild_biodiversity) ?? 0,
-        ecological_connectivity: toNum(row.ecological_connectivity) ?? 0,
-        ecosystem_services: toNum(row.ecosystem_services) ?? 0,
-        climate_resilience: toNum(row.climate_resilience) ?? 0,
-        community_nature_reciprocity: toNum(row.community_nature_reciprocity) ?? 0,
-        abiotic_integrity: toNum(row.abiotic_integrity) ?? 0,
-        anthropogenic_pressure: toNum(row.anthropogenic_pressure) ?? 0,
-      };
-
-      landscapes.push({
-        id,
-        name: props.name || id,
-        state: props.state || 'Unknown',
-        ecoregion: props.ecoregion || 'Unknown',
-        area_sqkm: Number((toNum(props.area_sqkm) ?? 0).toFixed(2)),
-        fne_score: Number(fneScore.toFixed(2)),
-        score_label: scoreLabel,
-        dimension_scores,
-        _row: row,
-      });
-
       return {
         ...f,
         properties: {
           ...props,
           id,
-          fne_score: Number(fneScore.toFixed(2)),
-          score_label: scoreLabel,
+          fne_score: Number((toNum(row.fne_score) ?? 0).toFixed(2)),
+          score_label: row.score_label || 'Unknown',
         },
       };
     });
-
-    return {
-      landscapes,
-      geojson: { ...boundaries, features },
-    };
+    return { ...boundaries, features };
   })();
-
-  return staticDataPromise;
+  return staticGeoPromise;
 }
 
 async function fetchJson(path, params = {}) {
@@ -172,8 +196,7 @@ export async function getLandscapes(params) {
   }
 
   if (USE_STATIC_FILES) {
-    const data = await loadStaticData();
-    let landscapes = data.landscapes;
+    let landscapes = await loadStaticLandscapes();
     if (params?.state) landscapes = landscapes.filter((l) => l.state === params.state);
     return { landscapes, total: landscapes.length, page: 1, per_page: landscapes.length };
   }
@@ -188,8 +211,8 @@ export async function getLandscapeDetail(id) {
   }
 
   if (USE_STATIC_FILES) {
-    const data = await loadStaticData();
-    const ls = data.landscapes.find((l) => l.id === id);
+    const landscapes = await loadStaticLandscapes();
+    const ls = landscapes.find((l) => l.id === id);
     if (!ls) throw new Error(`Landscape ${id} not found`);
 
     const row = ls._row || {};
@@ -221,8 +244,7 @@ export async function getLandscapesGeoJSON(params) {
   }
 
   if (USE_STATIC_FILES) {
-    const data = await loadStaticData();
-    return data.geojson;
+    return loadStaticGeoJSON();
   }
 
   return fetchJson('/landscapes/geojson', params);
@@ -235,9 +257,9 @@ export async function compareLandscapes(id1, id2) {
   }
 
   if (USE_STATIC_FILES) {
-    const data = await loadStaticData();
-    const ls1 = data.landscapes.find((l) => l.id === id1);
-    const ls2 = data.landscapes.find((l) => l.id === id2);
+    const landscapes = await loadStaticLandscapes();
+    const ls1 = landscapes.find((l) => l.id === id1);
+    const ls2 = landscapes.find((l) => l.id === id2);
     if (!ls1 || !ls2) throw new Error('Comparison data not found');
 
     const dimension_comparison = DIMENSIONS.map((d) => {
