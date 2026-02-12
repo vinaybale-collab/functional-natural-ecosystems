@@ -39,7 +39,7 @@ const LandingPage = () => {
           <div className="grid lg:grid-cols-12 gap-6 md:gap-8 items-stretch">
             <div className="lg:col-span-6 reveal delay-1 flex flex-col justify-center">
               <p className="text-[11px] tracking-[0.24em] uppercase text-gray-500 mb-3 font-semibold">Functional Natural Ecosystems - India</p>
-              <h1 className="font-display text-5xl md:text-7xl lg:text-[5.4rem] leading-[0.92] tracking-[-0.01em] mb-5">
+              <h1 className="font-heading font-black text-5xl md:text-7xl lg:text-[5.2rem] leading-[0.92] tracking-[-0.02em] mb-5">
                 How functional are
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-lime-700">our ecosystems?</span>
               </h1>
