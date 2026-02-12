@@ -2,6 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowRight, Globe2, Layers3, ShieldCheck } from 'lucide-react';
 import FNELogo from '../components/shared/FNELogo';
+import SiteFooter from '../components/shared/SiteFooter';
 import { DATASETS } from '../constants/datasets';
 
 const scorePill = 'inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-xs tracking-wider uppercase';
@@ -35,6 +36,7 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
           <FNELogo showIcon compact={false} />
           <nav className="hidden md:flex items-center gap-2">
+            <Link to="/about" className="px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-100">About</Link>
             <Link to="/methodology" className="px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-100">Methodology</Link>
             <Link to="/datasets" className="px-3 py-2 rounded-md text-sm text-gray-700 hover:bg-gray-100">Datasets</Link>
             <Link to="/app" className="px-3 py-2 rounded-md text-sm bg-black text-white">Explore</Link>
@@ -93,6 +95,7 @@ const LandingPage = () => {
                 </button>
                 <Link to="/methodology" className="px-6 py-3 rounded-xl border border-gray-300 hover:bg-gray-50">Read Methodology</Link>
                 <Link to="/datasets" className="px-6 py-3 rounded-xl border border-gray-300 hover:bg-gray-50">Understand Datasets</Link>
+                <Link to="/about" className="px-6 py-3 rounded-xl border border-gray-300 hover:bg-gray-50">About FNE</Link>
               </div>
             </div>
 
@@ -140,6 +143,7 @@ const LandingPage = () => {
           </div>
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 };

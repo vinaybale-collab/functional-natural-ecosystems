@@ -1,5 +1,6 @@
 import React from 'react';
 import SiteHeader from '../components/shared/SiteHeader';
+import SiteFooter from '../components/shared/SiteFooter';
 import LandscapeRadar from '../components/Dashboard/LandscapeRadar';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 
@@ -109,6 +110,7 @@ const MethodologyPage = () => {
           </div>
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 };

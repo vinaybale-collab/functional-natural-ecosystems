@@ -1,5 +1,6 @@
 import React from 'react';
 import SiteHeader from '../components/shared/SiteHeader';
+import SiteFooter from '../components/shared/SiteFooter';
 import { DATASETS } from '../constants/datasets';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip, RadarChart, Radar, PolarGrid, PolarAngleAxis, PolarRadiusAxis } from 'recharts';
 
@@ -95,6 +96,7 @@ const DatasetsPage = () => {
           </ul>
         </section>
       </main>
+      <SiteFooter />
     </div>
   );
 };

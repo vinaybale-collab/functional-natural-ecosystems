@@ -15,6 +15,7 @@ const SiteHeader = () => {
           <FNELogo showIcon compact={false} />
         </Link>
         <nav className="flex items-center gap-1">
+          <NavLink to="/about" className={navCls}>About</NavLink>
           <NavLink to="/app" className={navCls}>Explore</NavLink>
           <NavLink to="/methodology" className={navCls}>Methodology</NavLink>
           <NavLink to="/datasets" className={navCls}>Datasets</NavLink>
